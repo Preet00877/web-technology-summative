@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .thumbnail {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    #full-image {
+      display: block;
+      margin-top: 20px;
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery" id="gallery">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=100&h=100&fit=crop" data-full="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600" class="thumbnail">
+    <img src="https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?w=100&h=100&fit=crop" data-full="https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?w=600" class="thumbnail">
+    <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=100&h=100&fit=crop" data-full="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=600" class="thumbnail">
+  </div>
+  <img id="full-image" src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=600" alt="Click a thumbnail to view image">
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const fullImage = document.getElementById('full-image');
+
+    gallery.addEventListener('click', function(e) {
+      if (e.target.classList.contains('thumbnail')) {
+        const fullSrc = e.target.getAttribute('data-full');
+        fullImage.src = fullSrc;
+      }
+    });
+  </script>
+</body>
+</html>
